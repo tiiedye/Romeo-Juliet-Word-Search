@@ -27,6 +27,7 @@ void run_search() {
 
     in_file.open("./RomeoAndJuliet.txt");
 
+    std::cout << std::endl;
     std::cout << "Enter word to search for: ";
     std::cin >> word_to_find;
 
@@ -39,7 +40,7 @@ void run_search() {
 
     std::cout << std::endl;
     std::cout << word_count << " words were searched... " << std::endl;
-    std::cout << word_to_find << " was found " << match_count << " times." << std::endl;
+    std::cout << word_to_find << " was found " << match_count << " times." << std::endl << std::endl;
 
     std::cout << "Would you like to run another search? (Y/N): ";
     get_choice();
@@ -51,9 +52,9 @@ void get_choice() {
     char cont{};
     std::cin >> cont;
 
-    if (cont == 'y' || 'Y') {
+    if (cont == 'y' || cont == 'Y') {
         run_search();
-    } else if (cont == 'n' || 'N') {
+    } else if (cont == 'n' || cont == 'N') {
         in_file.close();
         std::cout << "Goodbye!" << std::endl;
     } else {
@@ -64,10 +65,22 @@ void get_choice() {
 
 int main() {
     std::ifstream in_file{};
+    std::string title{ "Romeo & Juliet Word Search" };
+    std::string str_one{ "Hello!" };
+    std::string str_two{ "This is a word search program that allows you to search for words" };
+    std::string str_three{"within the script of Romeo & Juliet."};
+    std::string str_four{"The search word is CASE SENSITIVE, so please keep that in mind."};
+    std::string str_five{"Have fun!!"};
 
-    std::cout << std::setw(20) << "" << "Romeo & Juliet Word Search" << std::endl;
+    std::cout << std::setw((70 - title.length()) / 2) << "" << title << std::endl;
     std::cout << std::setfill('-') << std::setw(70) << " " << std::endl;
     std::cout << std::setfill(' ');
+
+    std::cout << std::setw((70 - str_one.length()) / 2) << "" << str_one << std::endl;
+    std::cout << std::setw((70 - str_two.length()) / 2) << "" << str_two << std::endl;
+    std::cout << std::setw((70 - str_three.length()) / 2) << "" << str_three << std::endl;
+    std::cout << std::setw((70 - str_four.length()) / 2) << "" << str_four << std::endl;
+    std::cout << std::setw((70 - str_five.length()) / 2) << "" << str_five << std::endl;
 
     if (!in_file) {
         std::cerr << "There was a problem opening the file." << std::endl;
@@ -76,6 +89,6 @@ int main() {
 
     run_search();
 
-    std::cout << std::endl << std::endl;
+    std::cout << std::endl;
     return 0;
 }
