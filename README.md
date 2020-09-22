@@ -1,7 +1,8 @@
 ![made-with-VisualStudio](https://img.shields.io/badge/Made%20With-Visual%20Studio-ba88f3)  ![Using-CPlusPlus](https://img.shields.io/badge/Using-C%2B%2B-ff69b4)
 
 # Romeo & Juliet Word Search
-...
+A simple program that allows you to search for words within the script of Romeo & Juliet. 
+This program makes use of fstream to open, read, and close files, and iomanip to add some formatting to the CLI.
 
 <img src="./assets/screenshot.png"
      alt="Img"
