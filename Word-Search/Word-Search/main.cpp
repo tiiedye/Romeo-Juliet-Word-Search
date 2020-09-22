@@ -5,7 +5,7 @@
 // prototypes
 bool word_found(const std::string& word_to_find, const std::string& target_word);
 void run_search();
-char get_coice();
+void get_choice();
 
 //definitions
 bool word_found(const std::string& word_to_find, const std::string& target_word) {
@@ -41,18 +41,29 @@ void run_search() {
     std::cout << word_count << " words were searched... " << std::endl;
     std::cout << word_to_find << " was found " << match_count << " times." << std::endl;
 
-    in_file.close();
+    std::cout << "Would you like to run another search? (Y/N): ";
+    get_choice();
+
 }
 
-char get_coice() {
+void get_choice() {
+    std::ifstream in_file{};
     char cont{};
     std::cin >> cont;
-    return toupper(cont);
+
+    if (cont == 'y' || 'Y') {
+        run_search();
+    } else if (cont == 'n' || 'N') {
+        in_file.close();
+        std::cout << "Goodbye!" << std::endl;
+    } else {
+        in_file.close();
+        std::cout << "Unknown selection, program terminating. Goodbye!" << std::endl;
+    }
 }
 
 int main() {
     std::ifstream in_file{};
-    char cont{};
 
     std::cout << std::setw(20) << "" << "Romeo & Juliet Word Search" << std::endl;
     std::cout << std::setfill('-') << std::setw(70) << " " << std::endl;
@@ -64,10 +75,6 @@ int main() {
     }
 
     run_search();
-    std::cout << std::endl;
-
-    std::cout << "Would you like to run another search? (Y/N): ";
-    std::cin >> cont;
 
     std::cout << std::endl << std::endl;
     return 0;
